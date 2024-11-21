@@ -278,7 +278,7 @@ You can choose from any of the following ways to construct grammar from differen
 <p><strong>Method 1: Construct with a GBNF string.</strong>
 The GBNF (GGML BNF) specification is available
 <a class="reference external" href="https://github.com/ggerganov/llama.cpp/blob/master/grammars/README.md">here</a>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">xgrammar</span> <span class="kn">import</span> <span class="n">BNFGrammar</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">xgrammar</span> <span class="kn">import</span> <span class="n">Grammar</span>
 
 <span class="c1"># Method 1: Construct with a GBNF string.</span>
 <span class="n">gbnf_grammar</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -287,7 +287,7 @@ The GBNF (GGML BNF) specification is available
 <span class="s2">term  ::= num | &quot;(&quot; expr &quot;)&quot;</span>
 <span class="s2">num   ::= [0-9]+</span>
 <span class="s2">&quot;&quot;&quot;</span>
-<span class="n">gbnf_grammar</span> <span class="o">=</span> <span class="n">BNFGrammar</span><span class="p">(</span><span class="n">gbnf_grammar</span><span class="p">)</span>
+<span class="n">gbnf_grammar</span> <span class="o">=</span> <span class="n">Grammar</span><span class="p">(</span><span class="n">gbnf_grammar</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Method 2: Use the builtin JSON grammar.</strong></p>
@@ -346,14 +346,14 @@ As an example, here we use the Llama-3 model tokenizer.</p>
 <span class="n">tokenizer_info</span> <span class="o">=</span> <span class="n">TokenizerInfo</span><span class="o">.</span><span class="n">from_huggingface</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Now we can create a grammar compiler <code class="xref py py-class docutils literal notranslate"><span class="pre">xgrammar.CachedGrammarCompiler</span></code>
+<p>Now we can create a grammar compiler <code class="xref py py-class docutils literal notranslate"><span class="pre">xgrammar.GrammarCompiler</span></code>
 and compile the constructed grammar.
 Notably, we cache all the compiled grammars, so each grammar will be compiled
 at most once.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">xgrammar</span> <span class="kn">import</span> <span class="n">CachedGrammarCompiler</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">xgrammar</span> <span class="kn">import</span> <span class="n">GrammarCompiler</span>
 
-<span class="c1"># Construct CachedGrammarCompiler.</span>
-<span class="n">compiler</span> <span class="o">=</span> <span class="n">CachedGrammarCompiler</span><span class="p">(</span><span class="n">tokenizer_info</span><span class="p">,</span> <span class="n">max_threads</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="c1"># Construct GrammarCompiler.</span>
+<span class="n">compiler</span> <span class="o">=</span> <span class="n">GrammarCompiler</span><span class="p">(</span><span class="n">tokenizer_info</span><span class="p">,</span> <span class="n">max_threads</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
 <span class="c1"># Compiler the grammar.</span>
 <span class="n">compiled_grammar</span> <span class="o">=</span> <span class="n">compiler</span><span class="o">.</span><span class="n">compile_json_schema</span><span class="p">(</span><span class="n">json_schema_str</span><span class="p">)</span>
 </pre></div>
@@ -381,7 +381,7 @@ single-request generation and batch-request generation respectively.</p>
 <span class="c1"># Create a grammar matcher from the compiled grammar.</span>
 <span class="n">matcher</span> <span class="o">=</span> <span class="n">GrammarMatcher</span><span class="p">(</span><span class="n">compiled_grammar</span><span class="p">)</span>
 
-<span class="n">token_bitmask</span> <span class="o">=</span> <span class="n">GrammarMatcher</span><span class="o">.</span><span class="n">allocate_token_bitmask</span><span class="p">(</span><span class="n">matcher</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">)</span>
+<span class="n">token_bitmask</span> <span class="o">=</span> <span class="n">_allocate_token_bitmask</span><span class="p">(</span><span class="n">tokenizer_info</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">)</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">logits</span> <span class="o">=</span> <span class="n">LLM</span><span class="o">.</span><span class="n">inference</span><span class="p">()</span> <span class="c1"># logits is a tensor of shape (vocab_size,) on GPU</span>
     <span class="n">matcher</span><span class="o">.</span><span class="n">fill_next_token_bitmask</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">token_bitmask</span><span class="p">)</span>
