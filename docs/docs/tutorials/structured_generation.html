@@ -1,0 +1,658 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Structured Generation &mdash; XGrammar 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/tlcpack_theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <script type="text/javascript" src="../_static/js/tlcpack_theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Quick Start" href="../start/quick_start.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    
+<header class="header">
+    <div class="innercontainer">
+      <div class="headerInner d-flex justify-content-between align-items-center">
+          <div class="headerLogo">
+          </div>
+
+          <div id="headMenu" class="headerNav">
+            <button type="button" id="closeHeadMenu" class="navCloseBtn"><img src="../_static/img/close-icon.svg" alt="Close"></button>
+             <ul class="nav">
+                <li class="nav-item">
+                   <a class="nav-link" href=https://xgrammar.mlc.ai/>Home</a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link" href=https://github.com/mlc-ai/xgrammar>Github</a>
+                </li>
+             </ul>
+               <div class="responsivetlcdropdown">
+                 <button type="button" class="btn-link">
+                   Other Resources
+                 </button>
+                 <ul>
+                     <li>
+                       <a href=https://mlc.ai/>MLC Course</a>
+                     </li>
+                     <li>
+                       <a href=https://blog.mlc.ai/>MLC Blog</a>
+                     </li>
+                     <li>
+                       <a href=https://llm.mlc.ai/>MLC LLM</a>
+                     </li>
+                     <li>
+                       <a href=https://webllm.mlc.ai/>Web LLM</a>
+                     </li>
+                     <li>
+                       <a href=https://github.com/sgl-project/sglang>SGLang</a>
+                     </li>
+                 </ul>
+               </div>
+          </div>
+            <div class="responsiveMenuIcon">
+              <button type="button" id="menuBtn" class="btn-menu"><img src="../_static/img/menu-icon.svg" alt="Menu Icon"></button>
+            </div>
+
+            <div class="tlcDropdown">
+              <div class="dropdown">
+                <button type="button" class="btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Other Resources
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <ul>
+                     <li>
+                       <a href=https://mlc.ai/>MLC Course</a>
+                     </li>
+                     <li>
+                       <a href=https://blog.mlc.ai/>MLC Blog</a>
+                     </li>
+                     <li>
+                       <a href=https://llm.mlc.ai/>MLC LLM</a>
+                     </li>
+                     <li>
+                       <a href=https://webllm.mlc.ai/>Web LLM</a>
+                     </li>
+                     <li>
+                       <a href=https://github.com/sgl-project/sglang>SGLang</a>
+                     </li>
+                  </ul>
+                </div>
+              </div>
+          </div>
+       </div>
+    </div>
+ </header>
+ 
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side fixed">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="sidetitle" alt="Documentation Home"> XGrammar
+          
+
+          
+          </a>
+
+          
+            
+            
+                <div class="version">
+                  0.1.0
+                </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../start/quick_start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Structured Generation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-xgrammar">Install XGrammar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#json-generation">JSON Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#json-schema-guided-generation">JSON Schema Guided Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ebnf-guided-generation">EBNF Guided Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#structured-generation-for-batched-inference">Structured Generation for Batched Inference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      
+      <nav class="wy-nav-top" aria-label="top navigation" data-toggle="wy-nav-top">
+        
+            <div class="togglemenu">
+
+            </div>
+            <div class="nav-content">
+              <!-- XGrammar -->
+              Table of Contents
+            </div>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> <span class="br-arrow">></span></li>
+        
+      <li>Structured Generation</li>
+    
+    
+      
+      
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/mlc-ai/xgrammar/edit/main/docs/tutorials/structured_generation.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="structured-generation">
+<span id="tutorial-structured-generation"></span><h1>Structured Generation<a class="headerlink" href="#structured-generation" title="Permalink to this heading">¶</a></h1>
+<p>XGrammar enables efficient structured generation. In this tutorial, we go over how to
+use XGrammar to ensure that an LLM’s output adheres to the structure of a valid JSON, a
+customized JSON schema, and a customized EBNF grammar string.</p>
+<p>We first lay out the concepts by going over <a class="reference internal" href="#tutorial-json-generation"><span class="std std-ref">JSON generation</span></a>
+in detail. Then we go over how to generate with <a class="reference internal" href="#tutorial-json-schema-generation"><span class="std std-ref">customized JSON schemas</span></a>
+and <a class="reference internal" href="#tutorial-ebnf-generation"><span class="std std-ref">customized EBNF grammar strings</span></a>. Finally, we demonstrate
+how xgrammar works with <a class="reference internal" href="#tutorial-batched-inference"><span class="std std-ref">batched inference</span></a>.</p>
+<p>Therefore, we encourage you to start with <a class="reference internal" href="#tutorial-json-generation"><span class="std std-ref">JSON Generation</span></a>.</p>
+<p>The code snippets below are actual runnable code as we simulate the LLM generation.</p>
+<section id="install-xgrammar">
+<h2>Install XGrammar<a class="headerlink" href="#install-xgrammar" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference internal" href="../start/install.html#installation-prebuilt-package"><span class="std std-ref">XGrammar</span></a> is available via pip.
+It is always recommended to install it in an isolated conda virtual environment.</p>
+</section>
+<section id="json-generation">
+<span id="tutorial-json-generation"></span><h2>JSON Generation<a class="headerlink" href="#json-generation" title="Permalink to this heading">¶</a></h2>
+<p>In this section, we see how to use XGrammar to ensure that an LLM’s output is
+always a valid JSON.</p>
+<p>First, import necessary libraries for the tutorial.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xgrammar</span> <span class="k">as</span> <span class="nn">xgr</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoConfig</span>
+</pre></div>
+</div>
+<p>Then, we extract tokenizer info from the LLM we are using with <code class="docutils literal notranslate"><span class="pre">xgr.TokenizerInfo</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get tokenizer info</span>
+<span class="n">model_id</span> <span class="o">=</span> <span class="s2">&quot;Qwen/Qwen2.5-1.5B-Instruct&quot;</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+<span class="c1"># This can be larger than tokenizer.vocab_size due to paddings</span>
+<span class="n">full_vocab_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">vocab_size</span>
+<span class="n">tokenizer_info</span> <span class="o">=</span> <span class="n">xgr</span><span class="o">.</span><span class="n">TokenizerInfo</span><span class="o">.</span><span class="n">from_huggingface</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">,</span> <span class="n">vocab_size</span><span class="o">=</span><span class="n">full_vocab_size</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>With the <code class="docutils literal notranslate"><span class="pre">tokenizer_info</span></code>, instantiate <code class="docutils literal notranslate"><span class="pre">xgr.GrammarCompiler</span></code> that compiles a
+grammar of your choice. Here we use a JSON grammar. Note that the <code class="docutils literal notranslate"><span class="pre">compiler</span></code> behavior
+can be configured with <code class="docutils literal notranslate"><span class="pre">max_threads</span></code> for multithreading, and <code class="docutils literal notranslate"><span class="pre">enable_cache</span></code> (defaults to
+true) for caching compiled grammars. Note that every thing we have seen up to now are per-model (rather
+than per-generation).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">compiler</span> <span class="o">=</span> <span class="n">xgr</span><span class="o">.</span><span class="n">GrammarCompiler</span><span class="p">(</span><span class="n">tokenizer_info</span><span class="p">,</span> <span class="n">max_threads</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">compiled_grammar</span><span class="p">:</span> <span class="n">xgr</span><span class="o">.</span><span class="n">CompiledGrammar</span> <span class="o">=</span> <span class="n">compiler</span><span class="o">.</span><span class="n">compile_builtin_json_grammar</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>With the compiled grammar, we can instantiate a <code class="docutils literal notranslate"><span class="pre">xgr.GrammarMatcher</span></code>, the main construct
+we interact with that maintains the state of the structured generation. We also allocate a
+bitmask that will be used to mask logits.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate grammar matcher and allocate the bitmask</span>
+<span class="n">matcher</span> <span class="o">=</span> <span class="n">xgr</span><span class="o">.</span><span class="n">GrammarMatcher</span><span class="p">(</span><span class="n">compiled_grammar</span><span class="p">)</span>
+<span class="n">token_bitmask</span> <span class="o">=</span> <span class="n">xgr</span><span class="o">.</span><span class="n">allocate_token_bitmask</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">tokenizer_info</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we simulate a single-request auto-regressive generation. See later section for <a class="reference internal" href="#tutorial-batched-inference"><span class="std std-ref">batched generation</span></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here we simulate a valid sampled response</span>
+<span class="n">sim_sampled_response</span> <span class="o">=</span> <span class="s1">&#39;{ &quot;library&quot;: &quot;xgrammar&quot; }&lt;|endoftext|&gt;&#39;</span>
+<span class="n">sim_sampled_token_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">sim_sampled_response</span><span class="p">)</span>
+
+<span class="c1"># Each loop iteration is a simulated auto-regressive step</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sim_token_id</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sim_sampled_token_ids</span><span class="p">):</span>
+    <span class="c1"># LLM inference to get logits, here we use randn to simulate.</span>
+    <span class="c1"># logits is a tensor of shape (full_vocab_size,) on GPU</span>
+    <span class="c1"># logits = LLM.inference()</span>
+    <span class="n">logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">full_vocab_size</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+
+    <span class="c1"># Apply bitmask to logits to mask invalid tokens</span>
+    <span class="n">matcher</span><span class="o">.</span><span class="n">fill_next_token_bitmask</span><span class="p">(</span><span class="n">token_bitmask</span><span class="p">)</span>
+    <span class="n">xgr</span><span class="o">.</span><span class="n">apply_token_bitmask_inplace</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">token_bitmask</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">device</span><span class="p">))</span>
+
+    <span class="c1"># Sample next token</span>
+    <span class="n">probs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">next_token_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">full_vocab_size</span><span class="p">)),</span> <span class="n">p</span><span class="o">=</span><span class="n">probs</span><span class="p">)</span>
+
+    <span class="c1"># Accept token from matcher to update its state, so that the next bitmask</span>
+    <span class="c1"># generated will enforce the next token to be generated. Assert to make</span>
+    <span class="c1"># sure the token is indeed valid. Here we accept the simulated response</span>
+    <span class="c1"># assert matcher.accept_token(next_token_id)</span>
+    <span class="k">assert</span> <span class="n">matcher</span><span class="o">.</span><span class="n">accept_token</span><span class="p">(</span><span class="n">sim_token_id</span><span class="p">)</span>
+
+<span class="c1"># Since we accepted a stop token `&lt;|endoftext|&gt;`, we have terminated</span>
+<span class="k">assert</span> <span class="n">matcher</span><span class="o">.</span><span class="n">is_terminated</span><span class="p">()</span>
+
+<span class="c1"># Reset to be ready for the next auto-regressive generation</span>
+<span class="n">matcher</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="json-schema-guided-generation">
+<span id="tutorial-json-schema-generation"></span><h2>JSON Schema Guided Generation<a class="headerlink" href="#json-schema-guided-generation" title="Permalink to this heading">¶</a></h2>
+<p>In this section, we see how to use XGrammar to generate an output that adheres
+to a customized JSON schema.</p>
+<p>The flow is almost identical to the one above, except that the <code class="docutils literal notranslate"><span class="pre">CompiledGrammar</span></code>
+is compiled based on the JSON schema, rather than being compiled with a generic JSON grammar.</p>
+<p>First, set up the tokenizer info and the grammar compiler as above.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xgrammar</span> <span class="k">as</span> <span class="nn">xgr</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoConfig</span>
+
+<span class="c1"># Get tokenizer info</span>
+<span class="n">model_id</span> <span class="o">=</span> <span class="s2">&quot;Qwen/Qwen2.5-1.5B-Instruct&quot;</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+<span class="c1"># This can be larger than tokenizer.vocab_size due to paddings</span>
+<span class="n">full_vocab_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">vocab_size</span>
+<span class="n">tokenizer_info</span> <span class="o">=</span> <span class="n">xgr</span><span class="o">.</span><span class="n">TokenizerInfo</span><span class="o">.</span><span class="n">from_huggingface</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">,</span> <span class="n">vocab_size</span><span class="o">=</span><span class="n">full_vocab_size</span><span class="p">)</span>
+
+<span class="n">compiler</span> <span class="o">=</span> <span class="n">xgr</span><span class="o">.</span><span class="n">GrammarCompiler</span><span class="p">(</span><span class="n">tokenizer_info</span><span class="p">,</span> <span class="n">max_threads</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, to compile a grammar from a JSON schema, there are generically two methods: from a Pydantic model,
+or from a JSON schema string. The two code snippets below are functionally identical, pick one to run.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Method 1. Compile with a pydantic model</span>
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+
+<span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">age</span><span class="p">:</span> <span class="nb">int</span>
+
+<span class="n">compiled_grammar</span> <span class="o">=</span> <span class="n">compiler</span><span class="o">.</span><span class="n">compile_json_schema</span><span class="p">(</span><span class="n">Person</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Method 2. Compile with a JSON schema string</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">person_schema</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Person&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">compiled_grammar</span> <span class="o">=</span> <span class="n">compiler</span><span class="o">.</span><span class="n">compile_json_schema</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">person_schema</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Then, the remaining steps are identical to before, except that we now use a different
+<code class="docutils literal notranslate"><span class="pre">xgr.CompiledGrammar</span></code> and have a different simulated valid generation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate grammar matcher and allocate the bitmask</span>
+<span class="n">matcher</span> <span class="o">=</span> <span class="n">xgr</span><span class="o">.</span><span class="n">GrammarMatcher</span><span class="p">(</span><span class="n">compiled_grammar</span><span class="p">)</span>
+<span class="n">token_bitmask</span> <span class="o">=</span> <span class="n">xgr</span><span class="o">.</span><span class="n">allocate_token_bitmask</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">tokenizer_info</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">)</span>
+
+<span class="c1"># Here we simulate a valid sampled response</span>
+<span class="n">sim_sampled_response</span> <span class="o">=</span> <span class="s1">&#39;{&quot;name&quot;: &quot;xgrammar&quot;, &quot;age&quot;: 0}&lt;|endoftext|&gt;&#39;</span>
+<span class="n">sim_sampled_token_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">sim_sampled_response</span><span class="p">)</span>
+
+<span class="c1"># Each loop iteration is a simulated auto-regressive step</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sim_token_id</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sim_sampled_token_ids</span><span class="p">):</span>
+    <span class="c1"># LLM inference to get logits, here we use randn to simulate.</span>
+    <span class="c1"># logits is a tensor of shape (full_vocab_size,) on GPU</span>
+    <span class="c1"># logits = LLM.inference()</span>
+    <span class="n">logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">full_vocab_size</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+
+    <span class="c1"># Apply bitmask to logits to mask invalid tokens</span>
+    <span class="n">matcher</span><span class="o">.</span><span class="n">fill_next_token_bitmask</span><span class="p">(</span><span class="n">token_bitmask</span><span class="p">)</span>
+    <span class="n">xgr</span><span class="o">.</span><span class="n">apply_token_bitmask_inplace</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">token_bitmask</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">device</span><span class="p">))</span>
+
+    <span class="c1"># Sample next token</span>
+    <span class="n">probs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">next_token_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">full_vocab_size</span><span class="p">)),</span> <span class="n">p</span><span class="o">=</span><span class="n">probs</span><span class="p">)</span>
+
+    <span class="c1"># Accept token from matcher to update its state, so that the next bitmask</span>
+    <span class="c1"># generated will enforce the next token to be generated. Assert to make</span>
+    <span class="c1"># sure the token is indeed valid. Here we accept the simulated response</span>
+    <span class="c1"># assert matcher.accept_token(next_token_id)</span>
+    <span class="k">assert</span> <span class="n">matcher</span><span class="o">.</span><span class="n">accept_token</span><span class="p">(</span><span class="n">sim_token_id</span><span class="p">)</span>
+
+<span class="c1"># Since we accepted a stop token `&lt;|endoftext|&gt;`, we have terminated</span>
+<span class="k">assert</span> <span class="n">matcher</span><span class="o">.</span><span class="n">is_terminated</span><span class="p">()</span>
+
+<span class="c1"># Reset to be ready for the next auto-regressive generation</span>
+<span class="n">matcher</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="ebnf-guided-generation">
+<span id="tutorial-ebnf-generation"></span><h2>EBNF Guided Generation<a class="headerlink" href="#ebnf-guided-generation" title="Permalink to this heading">¶</a></h2>
+<p>XGrammar also enables generation that adheres to a customized EBNF grammar string. We currently use
+the GBNF format (GGML BNF), with the specification <a class="reference external" href="https://github.com/ggerganov/llama.cpp/blob/master/grammars/README.md">here</a>.</p>
+<p>The code is largely identical to above, except that the <code class="docutils literal notranslate"><span class="pre">CompiledGrammar</span></code> is now compiled with
+the provided EBNF grammar string.</p>
+<p>First, set up the tokenizer info and the grammar compiler as above.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xgrammar</span> <span class="k">as</span> <span class="nn">xgr</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoConfig</span>
+
+<span class="c1"># Get tokenizer info</span>
+<span class="n">model_id</span> <span class="o">=</span> <span class="s2">&quot;Qwen/Qwen2.5-1.5B-Instruct&quot;</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+<span class="c1"># This can be larger than tokenizer.vocab_size due to paddings</span>
+<span class="n">full_vocab_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">vocab_size</span>
+<span class="n">tokenizer_info</span> <span class="o">=</span> <span class="n">xgr</span><span class="o">.</span><span class="n">TokenizerInfo</span><span class="o">.</span><span class="n">from_huggingface</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">,</span> <span class="n">vocab_size</span><span class="o">=</span><span class="n">full_vocab_size</span><span class="p">)</span>
+
+<span class="n">compiler</span> <span class="o">=</span> <span class="n">xgr</span><span class="o">.</span><span class="n">GrammarCompiler</span><span class="p">(</span><span class="n">tokenizer_info</span><span class="p">,</span> <span class="n">max_threads</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, compile <code class="docutils literal notranslate"><span class="pre">CompiledGrammar</span></code> with your EBNF grammar string.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ebnf_grammar_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;root ::= (expr &quot;=&quot; term)+</span>
+<span class="s2">expr  ::= term ([-+*/] term)*</span>
+<span class="s2">term  ::= num | &quot;(&quot; expr &quot;)&quot;</span>
+<span class="s2">num   ::= [0-9]+&quot;&quot;&quot;</span>
+
+<span class="n">compiled_grammar</span> <span class="o">=</span> <span class="n">compiler</span><span class="o">.</span><span class="n">compile_grammar</span><span class="p">(</span><span class="n">ebnf_grammar_str</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then, the remaining steps are identical to before, except that we now use a different
+<code class="docutils literal notranslate"><span class="pre">xgr.CompiledGrammar</span></code> and have a different simulated valid generation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate grammar matcher and allocate the bitmask</span>
+<span class="n">matcher</span> <span class="o">=</span> <span class="n">xgr</span><span class="o">.</span><span class="n">GrammarMatcher</span><span class="p">(</span><span class="n">compiled_grammar</span><span class="p">)</span>
+<span class="n">token_bitmask</span> <span class="o">=</span> <span class="n">xgr</span><span class="o">.</span><span class="n">allocate_token_bitmask</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">tokenizer_info</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">)</span>
+
+<span class="c1"># Here we simulate a valid sampled response</span>
+<span class="n">sim_sampled_response</span> <span class="o">=</span> <span class="s1">&#39;(5+3)*2=16&lt;|endoftext|&gt;&#39;</span>
+<span class="n">sim_sampled_token_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">sim_sampled_response</span><span class="p">)</span>
+
+<span class="c1"># Each loop iteration is a simulated auto-regressive step</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sim_token_id</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sim_sampled_token_ids</span><span class="p">):</span>
+    <span class="c1"># LLM inference to get logits, here we use randn to simulate.</span>
+    <span class="c1"># logits is a tensor of shape (full_vocab_size,) on GPU</span>
+    <span class="c1"># logits = LLM.inference()</span>
+    <span class="n">logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">full_vocab_size</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+
+    <span class="c1"># Apply bitmask to logits to mask invalid tokens</span>
+    <span class="n">matcher</span><span class="o">.</span><span class="n">fill_next_token_bitmask</span><span class="p">(</span><span class="n">token_bitmask</span><span class="p">)</span>
+    <span class="n">xgr</span><span class="o">.</span><span class="n">apply_token_bitmask_inplace</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">token_bitmask</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">device</span><span class="p">))</span>
+
+    <span class="c1"># Sample next token</span>
+    <span class="n">probs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">next_token_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">full_vocab_size</span><span class="p">)),</span> <span class="n">p</span><span class="o">=</span><span class="n">probs</span><span class="p">)</span>
+
+    <span class="c1"># Accept token from matcher to update its state, so that the next bitmask</span>
+    <span class="c1"># generated will enforce the next token to be generated. Assert to make</span>
+    <span class="c1"># sure the token is indeed valid. Here we accept the simulated response</span>
+    <span class="c1"># assert matcher.accept_token(next_token_id)</span>
+    <span class="k">assert</span> <span class="n">matcher</span><span class="o">.</span><span class="n">accept_token</span><span class="p">(</span><span class="n">sim_token_id</span><span class="p">)</span>
+
+<span class="c1"># Since we accepted a stop token `&lt;|endoftext|&gt;`, we have terminated</span>
+<span class="k">assert</span> <span class="n">matcher</span><span class="o">.</span><span class="n">is_terminated</span><span class="p">()</span>
+
+<span class="c1"># Reset to be ready for the next auto-regressive generation</span>
+<span class="n">matcher</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="structured-generation-for-batched-inference">
+<span id="tutorial-batched-inference"></span><h2>Structured Generation for Batched Inference<a class="headerlink" href="#structured-generation-for-batched-inference" title="Permalink to this heading">¶</a></h2>
+<p>All the code snippets above assume a single request generation.
+This section demonstrates how the same concept works with batched generation.</p>
+<p>First, follow the exact same steps above for the per-model constructs
+<code class="docutils literal notranslate"><span class="pre">xgr.TokenizerInfo</span></code> and <code class="docutils literal notranslate"><span class="pre">xgr.GrammarCompiler</span></code>. Say each request needs
+to generate a valid JSON.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xgrammar</span> <span class="k">as</span> <span class="nn">xgr</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoConfig</span>
+
+<span class="c1"># Get tokenizer info</span>
+<span class="n">model_id</span> <span class="o">=</span> <span class="s2">&quot;Qwen/Qwen2.5-1.5B-Instruct&quot;</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+<span class="c1"># This can be larger than tokenizer.vocab_size due to paddings</span>
+<span class="n">full_vocab_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">vocab_size</span>
+<span class="n">tokenizer_info</span> <span class="o">=</span> <span class="n">xgr</span><span class="o">.</span><span class="n">TokenizerInfo</span><span class="o">.</span><span class="n">from_huggingface</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">,</span> <span class="n">vocab_size</span><span class="o">=</span><span class="n">full_vocab_size</span><span class="p">)</span>
+
+<span class="c1"># Compile a JSON grammar</span>
+<span class="n">compiler</span> <span class="o">=</span> <span class="n">xgr</span><span class="o">.</span><span class="n">GrammarCompiler</span><span class="p">(</span><span class="n">tokenizer_info</span><span class="p">,</span> <span class="n">max_threads</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">compiled_grammar</span><span class="p">:</span> <span class="n">xgr</span><span class="o">.</span><span class="n">CompiledGrammar</span> <span class="o">=</span> <span class="n">compiler</span><span class="o">.</span><span class="n">compile_builtin_json_grammar</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now, we need to maintain an <code class="docutils literal notranslate"><span class="pre">xgr.GrammarMatcher</span></code> for each request in the batch, since
+each has a different generation state. Note that each request in the batch can follow a different
+<code class="docutils literal notranslate"><span class="pre">xgr.CompiledGrammar</span></code>, but here for simplicity, they are all just following the general
+JSON grammar.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">matchers</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">xgr</span><span class="o">.</span><span class="n">GrammarMatcher</span><span class="p">(</span><span class="n">compiled_grammar</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">token_bitmask</span> <span class="o">=</span> <span class="n">xgr</span><span class="o">.</span><span class="n">allocate_token_bitmask</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">tokenizer_info</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We simulate an auto-regressive generation of batched inference. Note that here we
+assume the generation lengths of the two requests are the same for simplicity. But
+it should be easy to generalize based on how your engine supports batched inference.
+The key difference from single-request generation is that, in batched-request generation,
+each request has its own <code class="docutils literal notranslate"><span class="pre">xgr.GrammarMatcher</span></code> to maintain.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sim_sampled_responses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;{&quot;name&quot;: &quot;a&quot;}&lt;|endoftext|&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;{&quot;name&quot;: &quot;b&quot;}&lt;|endoftext|&gt;&#39;</span><span class="p">]</span>
+<span class="n">sim_sampled_token_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">sim_sampled_responses</span><span class="p">]</span>
+
+<span class="c1"># Each loop iteration is a simulated auto-regressive step</span>
+<span class="k">for</span> <span class="n">loop_iter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sim_sampled_token_ids</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+    <span class="c1"># LLM batched inference to get logits, here we use randn to simulate</span>
+    <span class="c1"># Now, logits is a tensor of shape (batch_size, full_vocab_size) on GPU</span>
+    <span class="c1"># logits = LLM.inference()</span>
+    <span class="n">logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">full_vocab_size</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+
+    <span class="c1"># This for loop is parallelizable using threading.Thread. But estimate</span>
+    <span class="c1"># the overhead in your engine.</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">):</span>
+        <span class="n">matchers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">fill_next_token_bitmask</span><span class="p">(</span><span class="n">token_bitmask</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">xgr</span><span class="o">.</span><span class="n">apply_token_bitmask_inplace</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">token_bitmask</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">device</span><span class="p">))</span>
+
+    <span class="c1"># Sample next token</span>
+    <span class="n">probs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">next_token_ids</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">full_vocab_size</span><span class="p">)),</span> <span class="n">p</span><span class="o">=</span><span class="n">probs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+    <span class="p">]</span>
+
+    <span class="c1"># Update the matcher for each request</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">):</span>
+        <span class="c1"># Here we accept the simulated response</span>
+        <span class="c1"># assert matchers[i].accept_token(next_token_ids[i])</span>
+        <span class="n">matchers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">accept_token</span><span class="p">(</span><span class="n">sim_sampled_token_ids</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">loop_iter</span><span class="p">])</span>
+
+<span class="c1"># In our simulated case, all requests should have terminated since we accepted</span>
+<span class="c1"># a stop token `&lt;|endoftext|&gt;`</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">matchers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">is_terminated</span><span class="p">()</span>
+    <span class="c1"># Reset to be ready for the next generation</span>
+    <span class="n">matchers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          
+
+<footer>
+
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../start/quick_start.html" class="btn btn-neutral float-left" title="Quick Start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+
+<div id="button" class="backtop"><img src="../_static/img/right.svg" alt="backtop"/> </div>
+<section class="footerSec">
+    <div class="footerHeader">
+      <div class="d-flex align-md-items-center justify-content-between flex-column flex-md-row">
+        <div class="copywrite d-flex align-items-center">
+          <h5 id="copy-right-info">© 2024 XGrammar</h5>
+        </div>
+      </div>
+
+    </div>
+
+    <div>
+      <div class="footernote"> </div>
+    </div>
+
+</section>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  </body>
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
