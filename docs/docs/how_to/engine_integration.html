@@ -286,7 +286,7 @@ is using an <code class="docutils literal notranslate"><span class="pre">AutoTok
 than <code class="docutils literal notranslate"><span class="pre">AutoTokenizer.vocab_size</span></code> due to paddings, with the former being the shape of the model’s
 logits. To be safe, always pass in the former when instantiating <code class="docutils literal notranslate"><span class="pre">xgr.TokenizerInfo</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get tokenizer info</span>
-<span class="n">model_id</span> <span class="o">=</span> <span class="s2">&quot;Qwen/Qwen2.5-0.5B-Instruct&quot;</span>
+<span class="n">model_id</span> <span class="o">=</span> <span class="s2">&quot;meta-llama/Llama-3.2-1B-Instruct&quot;</span>
 <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
 <span class="n">config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
 <span class="c1"># This can be larger than tokenizer.vocab_size due to paddings</span>
@@ -344,8 +344,8 @@ we will never sample them. After sampling the token, update the <code class="doc
 <code class="docutils literal notranslate"><span class="pre">xgr.GrammarMatcher.accept_token()</span></code>. Finally, use  <code class="docutils literal notranslate"><span class="pre">xgr.GrammarMatcher.reset()</span></code> to prepare
 for the next generation.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here we simulate a valid sampled response</span>
-<span class="n">sim_sampled_response</span> <span class="o">=</span> <span class="s1">&#39;{ &quot;library&quot;: &quot;xgrammar&quot; }&lt;|endoftext|&gt;&#39;</span>
-<span class="n">sim_sampled_token_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">sim_sampled_response</span><span class="p">)</span>
+<span class="n">sim_sampled_response</span> <span class="o">=</span> <span class="s1">&#39;{ &quot;library&quot;: &quot;xgrammar&quot; }&lt;|end_of_text|&gt;&#39;</span>
+<span class="n">sim_sampled_token_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">sim_sampled_response</span><span class="p">,</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># Allocate a token bitmask</span>
 <span class="n">token_bitmask</span> <span class="o">=</span> <span class="n">xgr</span><span class="o">.</span><span class="n">allocate_token_bitmask</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">tokenizer_info</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">)</span>
@@ -371,7 +371,7 @@ for the next generation.</p>
     <span class="c1"># assert matcher.accept_token(next_token_id)</span>
     <span class="k">assert</span> <span class="n">matcher</span><span class="o">.</span><span class="n">accept_token</span><span class="p">(</span><span class="n">sim_token_id</span><span class="p">)</span>
 
-<span class="c1"># Since we accepted a stop token `&lt;|endoftext|&gt;`, we have terminated</span>
+<span class="c1"># Since we accepted a stop token `&lt;|end_of_text|&gt;`, we have terminated</span>
 <span class="k">assert</span> <span class="n">matcher</span><span class="o">.</span><span class="n">is_terminated</span><span class="p">()</span>
 
 <span class="c1"># Reset to be ready for the next auto-regressive generation</span>
@@ -393,7 +393,7 @@ to generate a valid JSON.</p>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoConfig</span>
 
 <span class="c1"># Get tokenizer info</span>
-<span class="n">model_id</span> <span class="o">=</span> <span class="s2">&quot;Qwen/Qwen2.5-0.5B-Instruct&quot;</span>
+<span class="n">model_id</span> <span class="o">=</span> <span class="s2">&quot;meta-llama/Llama-3.2-1B-Instruct&quot;</span>
 <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
 <span class="n">config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
 <span class="c1"># This can be larger than tokenizer.vocab_size due to paddings</span>
@@ -422,8 +422,11 @@ assume the generation lengths of the two requests are the same for simplicity. B
 it should be easy to generalize based on how your engine supports batched inference.
 The key difference from single-request generation is that, in batched-request generation,
 each request has its own <code class="docutils literal notranslate"><span class="pre">xgr.GrammarMatcher</span></code> to maintain.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sim_sampled_responses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;{&quot;name&quot;: &quot;a&quot;}&lt;|endoftext|&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;{&quot;name&quot;: &quot;b&quot;}&lt;|endoftext|&gt;&#39;</span><span class="p">]</span>
-<span class="n">sim_sampled_token_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">sim_sampled_responses</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sim_sampled_responses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;{&quot;name&quot;: &quot;a&quot;}&lt;|end_of_text|&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;{&quot;name&quot;: &quot;b&quot;}&lt;|end_of_text|&gt;&#39;</span><span class="p">]</span>
+<span class="n">sim_sampled_token_ids</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">sim_sampled_responses</span>
+<span class="p">]</span>
 
 <span class="c1"># Each loop iteration is a simulated auto-regressive step</span>
 <span class="k">for</span> <span class="n">loop_iter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sim_sampled_token_ids</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
@@ -452,7 +455,7 @@ each request has its own <code class="docutils literal notranslate"><span class=
         <span class="n">matchers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">accept_token</span><span class="p">(</span><span class="n">sim_sampled_token_ids</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">loop_iter</span><span class="p">])</span>
 
 <span class="c1"># In our simulated case, all requests should have terminated since we accepted</span>
-<span class="c1"># a stop token `&lt;|endoftext|&gt;`</span>
+<span class="c1"># a stop token `&lt;|end_of_text|&gt;`</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">):</span>
     <span class="k">assert</span> <span class="n">matchers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">is_terminated</span><span class="p">()</span>
     <span class="c1"># Reset to be ready for the next generation</span>

@@ -276,7 +276,7 @@ ane EBNF grammar.</p>
 the <code class="docutils literal notranslate"><span class="pre">tokenizer_info</span></code>, instantiate <code class="docutils literal notranslate"><span class="pre">xgr.GrammarCompiler</span></code> that will compiler a grammar of
 your choice.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get tokenizer info</span>
-<span class="n">model_id</span> <span class="o">=</span> <span class="s2">&quot;Qwen/Qwen2.5-0.5B-Instruct&quot;</span>
+<span class="n">model_id</span> <span class="o">=</span> <span class="s2">&quot;meta-llama/Llama-3.2-1B-Instruct&quot;</span>
 <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
 <span class="n">config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
 <span class="c1"># This can be larger than tokenizer.vocab_size due to paddings</span>
@@ -308,8 +308,8 @@ bitmask that will be used to mask logits.</p>
 <p>Now we simulate a single-request auto-regressive generation. See <a class="reference internal" href="engine_integration.html#how-to-engine-integration"><span class="std std-ref">Integration with LLM Engine</span></a>
 for batched inference.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here we simulate a valid sampled response</span>
-<span class="n">sim_sampled_response</span> <span class="o">=</span> <span class="s1">&#39;(5+3)*2=16&lt;|endoftext|&gt;&#39;</span>
-<span class="n">sim_sampled_token_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">sim_sampled_response</span><span class="p">)</span>
+<span class="n">sim_sampled_response</span> <span class="o">=</span> <span class="s1">&#39;(5+3)*2=16&lt;|end_of_text|&gt;&#39;</span>
+<span class="n">sim_sampled_token_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">sim_sampled_response</span><span class="p">,</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># Each loop iteration is a simulated auto-regressive step</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sim_token_id</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sim_sampled_token_ids</span><span class="p">):</span>
@@ -332,7 +332,7 @@ for batched inference.</p>
     <span class="c1"># assert matcher.accept_token(next_token_id)</span>
     <span class="k">assert</span> <span class="n">matcher</span><span class="o">.</span><span class="n">accept_token</span><span class="p">(</span><span class="n">sim_token_id</span><span class="p">)</span>
 
-<span class="c1"># Since we accepted a stop token `&lt;|endoftext|&gt;`, we have terminated</span>
+<span class="c1"># Since we accepted a stop token `&lt;|end_of_text|&gt;`, we have terminated</span>
 <span class="k">assert</span> <span class="n">matcher</span><span class="o">.</span><span class="n">is_terminated</span><span class="p">()</span>
 
 <span class="c1"># Reset to be ready for the next auto-regressive generation</span>
