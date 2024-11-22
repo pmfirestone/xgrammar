@@ -46,7 +46,7 @@
     <script type="text/javascript" src="../../_static/js/tlcpack_theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Structured Generation" href="../../tutorials/structured_generation.html" /> 
+    <link rel="prev" title="Integration with LLM Engine" href="../../how_to/engine_integration.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -150,9 +150,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../start/install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../start/quick_start.html">Quick Start</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<p class="caption" role="heading"><span class="caption-text">How To</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/structured_generation.html">Structured Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how_to/json_generation.html">JSON Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how_to/ebnf_guided_generation.html">EBNF-Guided Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how_to/engine_integration.html">Integration with LLM Engine</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
 <ul class="current">
@@ -922,30 +924,22 @@ masked logits will be set to -inf.</p>
 <p>When indices is not specified, the shape of logits and bitmask should be
 (batch_size, vocab_size) and (batch_size, bitmask_size) respectively. bitmask_size =
 ceil(vocab_size / 32). The operation is</p>
-<dl class="simple">
-<dt>for i in range(batch_size):</dt><dd><dl class="simple">
-<dt>for j in range(vocab_size):</dt><dd><dl class="simple">
-<dt>if (get_bitmask_value(bitmask[i], j)):</dt><dd><p>logits[indices[i], j] = -inf</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">get_bitmask_value</span><span class="p">(</span><span class="n">bitmask</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">logits</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">inf</span>
+</pre></div>
+</div>
 <p>get_bitmask_value(bitmask, j) gets the j-th bit of the bitmask.</p>
 <p>Indices can be used to specify which batch id to apply the bitmask to. When specified, the shape
 of logits and bitmask should be (batch_size, vocab_size) and (len(indices), bitmask_size)
 respectively. The operation will be</p>
-<dl class="simple">
-<dt>for i in range(len(indices)):</dt><dd><dl class="simple">
-<dt>for j in range(vocab_size):</dt><dd><dl class="simple">
-<dt>if (get_bitmask_value(bitmask[i], j)):</dt><dd><p>logits[indices[i], j] = -inf</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">get_bitmask_value</span><span class="p">(</span><span class="n">bitmask</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">logits</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">inf</span>
+</pre></div>
+</div>
 <p>The logits and bitmask should be on the same device. If both them are on CUDA, we launch a CUDA
 kernel to apply bitmask. If both them are on CPU, we use a CPU implementation. The CUDA kernel
 is optimized and should be preferred.</p>
@@ -979,7 +973,7 @@ is optimized and should be preferred.</p>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../../tutorials/structured_generation.html" class="btn btn-neutral float-left" title="Structured Generation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../../how_to/engine_integration.html" class="btn btn-neutral float-left" title="Integration with LLM Engine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
 
