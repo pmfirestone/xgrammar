@@ -275,7 +275,7 @@ ane EBNF grammar.</p>
 the <code class="docutils literal notranslate"><span class="pre">tokenizer_info</span></code>, instantiate <code class="docutils literal notranslate"><span class="pre">xgr.GrammarCompiler</span></code> that will compiler a grammar of
 your choice.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get tokenizer info</span>
-<span class="n">model_id</span> <span class="o">=</span> <span class="s2">&quot;meta-llama/Llama-3.2-1B-Instruct&quot;</span>
+<span class="n">model_id</span> <span class="o">=</span> <span class="s2">&quot;Qwen/Qwen2.5-0.5B-Instruct&quot;</span>
 <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
 <span class="n">config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
 <span class="c1"># This can be larger than tokenizer.vocab_size due to paddings</span>
