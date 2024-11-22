@@ -334,7 +334,7 @@ bitmask that will be used to mask logits.</p>
 <p>Now we simulate a single-request auto-regressive generation. See <a class="reference internal" href="engine_integration.html#how-to-engine-integration"><span class="std std-ref">Integration with LLM Engine</span></a>
 for batched inference.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here we simulate a valid sampled response</span>
-<span class="n">sim_sampled_response</span> <span class="o">=</span> <span class="s1">&#39;{ &quot;library&quot;: &quot;xgrammar&quot; }&lt;|end_of_text|&gt;&#39;</span>
+<span class="n">sim_sampled_response</span> <span class="o">=</span> <span class="s1">&#39;{&quot;name&quot;: &quot;xgrammar&quot;, &quot;age&quot;: 0}&lt;|end_of_text|&gt;&#39;</span>
 <span class="n">sim_sampled_token_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">sim_sampled_response</span><span class="p">,</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># Each loop iteration is a simulated auto-regressive step</span>
@@ -404,7 +404,7 @@ this integration mainly aims for accessibility and may contain extra overhead.</
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">age</span><span class="p">:</span> <span class="nb">int</span>
 
-<span class="n">compiled_grammar</span> <span class="o">=</span> <span class="n">compiler</span><span class="o">.</span><span class="n">compile_json_schema</span><span class="p">(</span><span class="n">Person</span><span class="p">)</span>
+<span class="n">compiled_grammar</span> <span class="o">=</span> <span class="n">grammar_compiler</span><span class="o">.</span><span class="n">compile_json_schema</span><span class="p">(</span><span class="n">Person</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Finally, use <code class="docutils literal notranslate"><span class="pre">LogitsProcessor</span></code> to generate with grammar.</p>

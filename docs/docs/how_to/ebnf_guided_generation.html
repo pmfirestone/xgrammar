@@ -384,7 +384,7 @@ this integration mainly aims for accessibility and may contain extra overhead.</
 <span class="s2">basic_object ::= &quot;{&quot; (&quot;&quot; | ws basic_string ws &quot;:&quot; ws basic_any ( ws &quot;,&quot; ws basic_string ws &quot;:&quot; ws basic_any)*) ws &quot;}&quot;</span>
 <span class="s2">ws ::= [ \n\t]*</span>
 <span class="s2">&quot;&quot;&quot;</span>
-<span class="n">compiled_grammar</span> <span class="o">=</span> <span class="n">compiler</span><span class="o">.</span><span class="n">compile_json_schema</span><span class="p">(</span><span class="n">json_grammar_ebnf</span><span class="p">)</span>
+<span class="n">compiled_grammar</span> <span class="o">=</span> <span class="n">grammar_compiler</span><span class="o">.</span><span class="n">compile_grammar</span><span class="p">(</span><span class="n">json_grammar_ebnf_str</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Finally, use <code class="docutils literal notranslate"><span class="pre">LogitsProcessor</span></code> to generate with grammar.</p>
