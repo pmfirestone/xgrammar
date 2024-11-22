@@ -46,7 +46,7 @@
     <script type="text/javascript" src="../_static/js/tlcpack_theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="xgrammar" href="../api/python/index.html" />
+    <link rel="next" title="Portable API" href="portable_api.html" />
     <link rel="prev" title="EBNF-Guided Generation" href="ebnf_guided_generation.html" /> 
 </head>
 
@@ -162,12 +162,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#xgr-grammarcompiler">xgr.GrammarCompiler</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#xgr-compiledgrammar">xgr.CompiledGrammar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#xgr-grammarmatcher">xgr.GrammarMatcher</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#auto-regressive-generation-with-xgr-grammarmatcher">Auto-regressive Generation with xgr.GrammarMatcher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bitmasking-logits-in-auto-regressive-generation">Bitmasking Logits in Auto-regressive Generation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#structured-generation-for-batched-inference">Structured Generation for Batched Inference</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="portable_api.html">Portable API</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
 <ul>
@@ -327,8 +328,8 @@ as we will see in <a class="reference internal" href="#how-to-engine-integration
 </pre></div>
 </div>
 </section>
-<section id="auto-regressive-generation-with-xgr-grammarmatcher">
-<h3>Auto-regressive Generation with xgr.GrammarMatcher<a class="headerlink" href="#auto-regressive-generation-with-xgr-grammarmatcher" title="Permalink to this heading">¶</a></h3>
+<section id="bitmasking-logits-in-auto-regressive-generation">
+<h3>Bitmasking Logits in Auto-regressive Generation<a class="headerlink" href="#bitmasking-logits-in-auto-regressive-generation" title="Permalink to this heading">¶</a></h3>
 <p>Now we simulate a single-request auto-regressive generation. See later section for
 <a class="reference internal" href="#how-to-engine-integration-batched"><span class="std std-ref">Structured Generation for Batched Inference</span></a>.</p>
 <p>First, we pre-allocate a token bitmask with <code class="docutils literal notranslate"><span class="pre">xgr.allocate_token_bitmask()</span></code>,
@@ -471,7 +472,7 @@ each request has its own <code class="docutils literal notranslate"><span class=
 
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../api/python/index.html" class="btn btn-neutral float-right" title="xgrammar" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="portable_api.html" class="btn btn-neutral float-right" title="Portable API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="ebnf_guided_generation.html" class="btn btn-neutral float-left" title="EBNF-Guided Generation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
