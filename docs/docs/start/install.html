@@ -318,14 +318,16 @@ python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </s
 <p><strong>Step 2. Configure, build and install.</strong> A standard git-based workflow is recommended to download XGrammar.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. clone from GitHub</span>
 git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/mlc-ai/xgrammar.git<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>xgrammar
-<span class="c1"># 2. build XGrammar core and Python bindings</span>
+<span class="c1"># 2. Install pre-commit hooks</span>
+pre-commit<span class="w"> </span>install
+<span class="c1"># 3. build XGrammar core and Python bindings</span>
 mkdir<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
 cmake<span class="w"> </span>..<span class="w"> </span>-G<span class="w"> </span>Ninja
 ninja
-<span class="c1"># 3. install the Python package</span>
+<span class="c1"># 4. install the Python package</span>
 <span class="nb">cd</span><span class="w"> </span>../python
 python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.
-<span class="c1"># 4. (optional) add the python directory to PATH</span>
+<span class="c1"># 5. (optional) add the python directory to PATH</span>
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export PATH=\&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">:\$PATH\&quot;&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
 </pre></div>
 </div>
